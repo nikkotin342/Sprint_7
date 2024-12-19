@@ -1,6 +1,7 @@
 import allure
 
 from methods.courier_methods import CourierMethod
+from tests import data
 
 
 @allure.title('Проверка авторизации с различными условиями')
@@ -24,8 +25,7 @@ class TestLoginCourier:
 
     def test_login_courier_without_login(self):
         response = CourierMethod().login_without_login('qwerty')
-        assert response[0] == 400 and response[1] == {'code': 400, 'message': 'Недостаточно данных для входа'}
-
+        assert response[0] == 400 and response[1] == data.LOGIN_400
     def test_login_courier_without_pass(self):
         response = CourierMethod().login_without_pass('qwerty')
-        assert response[0] == 400 and response[1] == {'code': 400, 'message': 'Недостаточно данных для входа'}
+        assert response[0] == 400 and response[1] == data.LOGIN_400
