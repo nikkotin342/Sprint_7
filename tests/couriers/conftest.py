@@ -16,8 +16,9 @@ def courier_data():
 def create_courier_and_delete(courier_data):
     response=CourierMethod().create_courier(*courier_data)
     response_lp = CourierMethod().login_courier(*response[2])
-    response_del = CourierMethod().delete_courier(response_lp[1]['id'])
-    return response[0], response[1]
+    yield response[0], response[1]
+    CourierMethod().delete_courier(response_lp[1]['id'])
+
 
 
 
